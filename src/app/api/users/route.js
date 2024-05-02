@@ -20,23 +20,40 @@ export async function GET(request) {
 }
 
 // Create the user
-export async function POST(request, Response) {
 
-  const { name, email, password, about } = await request.json()
+export async function POST(request) {
+  const { name, email, password, about } = await request.json();
 
-  const user = new User({
-    name, email, password, about
-  });
   try {
-
-    await user.save();
-    NextResponse.json(user, { status: 201, });
+    
+    const emailvaild = await User.findOne({email});
+    console.log(emailvaild);
+    if (emailvaild) {
+      // If email exists, return a 400 Bad Request response
+      
+      return NextResponse.json({
+        message: "Email already exists",
+        status: false,
+      }, { status: 409});
+    } else {
+      // If email doesn't exist, create the new user
+      const user = new User({ name, email, password, about });
+      await user.save();
+      return NextResponse.json(user, { status: 201 });
+    }
   } catch (error) {
-    console.log(error);
-    return NextResponse.json({
-      messaage: "failed to create the user",
-      staus: false,
-    })
+    if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
+      return NextResponse.json({
+        message: "Email already exists",
+        status: false,
+      }, { status: 400 });
+    } else {
+      console.log(error);
+      return NextResponse.json({
+        message: "Failed to create user",
+        status: false,
+      }, { status: 500 });
+    }
   }
 }
 
