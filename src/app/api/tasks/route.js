@@ -9,7 +9,7 @@ export async function POST(request) {
       title, content, userId,
     });
     const createdTask = await task.save();
-    return NextResponse.json(createdTask, { status: 201 })
+    return NextResponse.json({createdTask , success: true ,})
   } catch (error) {
     return NextResponse.json({
       message: 'failed to create',
