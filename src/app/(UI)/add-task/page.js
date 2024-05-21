@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { addTask } from "../services/taskService";
+import { addTask } from "../../services/taskService";
 import { Result } from "postcss";
 import { toast } from "react-toastify";
 
@@ -8,7 +8,7 @@ export default function AddTask() {
   const [task, SetTask] = useState({
     title: "",
     content: "",
-    userId: "6633cfd74475240d03783",
+    userId: "66324cd7bdef0b9ac13bb190",
   });
   // console.log(task);
 
@@ -26,7 +26,7 @@ export default function AddTask() {
         SetTask({
           title: "",
           content: "",
-          userId: "66324cd7bdef0b9ac13bb190",
+          userId: "",
         });
       } else {
         toast.error("failed to create the post");

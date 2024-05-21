@@ -33,13 +33,13 @@ export async function POST(request) {
       
       return NextResponse.json({
         message: "Email already exists",
-        status: false,
-      }, { status: 409});
+        success: false,
+      });
     } else {
       // If email doesn't exist, create the new user
       const user = new User({ name, email, password, about });
       await user.save();
-      return NextResponse.json(user, { status: 201 });
+      return NextResponse.json({user,success: true });
     }
   } catch (error) {
     if (error.code === 11000 && error.keyPattern && error.keyPattern.email) {
