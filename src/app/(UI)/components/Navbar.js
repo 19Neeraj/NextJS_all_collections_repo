@@ -23,7 +23,7 @@ export default function Navbar() {
       </ul>
       </aside>
       <aside className="flex gap-3">
-        <Link href='/'><button className="px-5 bg-blue-500 rounded-md">Log in</button></Link>
+        <Link href='/log_in'><button className="px-5 bg-blue-500 rounded-md">Log in</button></Link>
         <Link href='/signup'><button className="px-5 bg-blue-500 rounded-md">Sign up</button></Link>
       </aside>
     </nav>

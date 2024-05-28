@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { signup } from "../../services/taskService";
+import { signup } from "../../services/userService";
 import { Result } from "postcss";
 import { toast } from "react-toastify";
+import { useRouter } from 'next/navigation';
 
 export default function Signup() {
+    const router = useRouter();
   const [user, setUser] = useState({
     name: "",
     email:"",
@@ -23,16 +25,16 @@ export default function Signup() {
     //   console.log(result);
 
       if (result.success == true) {
-        toast.success("your post is created ");
+        toast.success("your successfuly Register ");
         setUser({
             name: "",
             email:"",
             password:"",
             about:""
         });
-        
+        router.push('/log_in');
       } else {
-        toast.error("Email already exists");
+        toast.error("Email already Register");
       }
     } catch (error) {
       console.log(error);
@@ -122,12 +124,16 @@ export default function Signup() {
             <button className="bg-blue-500 px-5 rounded-xl hover:bg-blue-400">
               Register
             </button>
-            {/* <button
-              onClick={(e) => setUser({ title: "", content: "" })}
+            <button
+              onClick={(e) => setUser({ 
+                name: "",
+            email:"",
+            password:"",
+            about:""})}
               className="bg-red-600 px-4 py-1 rounded-xl hover:bg-red-400"
             >
               clear
-            </button> */}
+            </button>
           </div>
         </form>
         {/* {JSON.stringify(user)} */}

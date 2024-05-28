@@ -1,6 +1,7 @@
 import { connectdb } from "@/helper/database";
 import User from '@/models/user';
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
 
 connectdb();
 export async function GET(request) {
@@ -27,7 +28,7 @@ export async function POST(request) {
   try {
     
     const emailvaild = await User.findOne({email});
-    console.log(emailvaild);
+    // console.log(emailvaild);
     if (emailvaild) {
       // If email exists, return a 400 Bad Request response
       
@@ -37,7 +38,12 @@ export async function POST(request) {
       });
     } else {
       // If email doesn't exist, create the new user
-      const user = new User({ name, email, password, about });
+      
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      // console.log(hashedPassword);
+      const user = new User({ name, email, password:hashedPassword, about });
+      
       await user.save();
       return NextResponse.json({user,success: true });
     }
