@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
-import { signup } from "../../services/userService";
-import { Result } from "postcss";
+
+// import { Result } from "postcss";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/navigation';
+import { signup } from "@/app/services/userService";
 
-export default function Signup() {
+export default function SignupPage() {
     const router = useRouter();
   const [user, setUser] = useState({
     name: "",
@@ -13,16 +14,17 @@ export default function Signup() {
     password:"",
     about:""
   });
-  // console.log(user);
+  console.log(user);
 
   const handleAdduser = async (event) => {
     event.preventDefault();
-    // console.log(user);
+    
 
     try {
+      console.log(user);
       const result = await signup(user);
 
-    //   console.log(result);
+      console.log(result);
 
       if (result.success == true) {
         toast.success("your successfuly Register ");
@@ -34,11 +36,11 @@ export default function Signup() {
         });
         router.push('/log_in');
       } else {
-        toast.error("Email already Register");
+        toast.error("failed to  Register");
       }
     } catch (error) {
       console.log(error);
-      toast.error("failed to create the post");
+      toast.error("failed to create the account");
     }
   };
   return (

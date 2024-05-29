@@ -10,3 +10,13 @@ export async function login(loginData){
     return result;
 }
 
+export async function currentUser(){
+    const result = await httpAxios.get("/api/currentuser").then((response)=>response.data);
+    return result;
+}
+
+export async function userlogedout(){
+    const result = await httpAxios.post("/api/logout").then((response)=>response.data);
+    return result;
+}
+

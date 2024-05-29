@@ -17,9 +17,9 @@ export async function POST(request) {
       throw new Error (' this email Id is not Register');
     } 
     const matched = await bcrypt.compare(password, user.password);
-    console.log(matched);
-    console.log(user.password);
-    console.log(password);
+    // console.log(matched);
+    // console.log(user.password);
+    // console.log(password);
     if (!matched) {
         throw new Error ('password not matched');
     };
@@ -27,12 +27,13 @@ export async function POST(request) {
         _id:user._id,
         name:user.name,
     },process.env.JWT_KEY);
-    console.log(token);
+    // console.log(token);
 
-    const response = NextResponse.json({authtoken:token},{
+    const response = NextResponse.json({authtoken:token, user:user,},{
         messaage: "success",
         status: 200,
         success:true,
+       
 
       });
       console.log(response);
@@ -46,8 +47,10 @@ export async function POST(request) {
     console.log(error);
     return NextResponse.json({
       messaage: error.message,
-      status: 505,
+      status: 401,
       success:false,
+    },{
+      status:401
     });
   }
 }

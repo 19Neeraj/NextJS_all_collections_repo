@@ -24,11 +24,12 @@ export async function GET(request) {
 
 export async function POST(request) {
   const { name, email, password, about } = await request.json();
+  console.log(name, email, password, about);
 
   try {
     
     const emailvaild = await User.findOne({email});
-    // console.log(emailvaild);
+    console.log(emailvaild);
     if (emailvaild) {
       // If email exists, return a 400 Bad Request response
       
@@ -41,9 +42,9 @@ export async function POST(request) {
       
       const hashedPassword = await bcrypt.hash(password, 10);
       
-      // console.log(hashedPassword);
+      console.log(hashedPassword);
       const user = new User({ name, email, password:hashedPassword, about });
-      
+      console.log(user);
       await user.save();
       return NextResponse.json({user,success: true });
     }

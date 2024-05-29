@@ -1,13 +1,16 @@
 
 "use client";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { login } from "../../services/userService";
 import { Result } from "postcss";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/navigation';
+import UserContext from "@/context/userContext";
+
 
 export default function LogIn() {
     const router = useRouter();
+    const context = useContext(UserContext)
   const [loginData, setLoginData] = useState({
     
     email:"",
@@ -16,6 +19,8 @@ export default function LogIn() {
   });
   console.log(loginData);
 
+
+ 
   const handleLoginuser = async (event) => {
     event.preventDefault();
     // console.log(user);
@@ -33,6 +38,7 @@ export default function LogIn() {
             password:"",
            
         });
+        context.setUser(result.user);
         router.push('/home');
       } else {
         toast.error("check your details");
