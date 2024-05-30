@@ -19,4 +19,8 @@ export async function userlogedout(){
     const result = await httpAxios.post("/api/logout").then((response)=>response.data);
     return result;
 }
+export async function getsingleuser(userid){
+    const result = await httpAxios.get(`/api/users/${userid}`).then((response)=>response.data);
+    return result;
+}
 

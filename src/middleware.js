@@ -10,7 +10,7 @@ console.log(authToken);
 if(request.nextUrl.pathname=='/api/login'||request.nextUrl.pathname==="/api/users"){
   return
 }
-const logedinNotAccesspath = request.nextUrl.pathname ==="/log_in" || request.nextUrl.pathname === "/signup";
+const logedinNotAccesspath = request.nextUrl.pathname === "/log_in" || request.nextUrl.pathname === "/signup";
 if (logedinNotAccesspath){
   if(authToken){
     toast.warn("your already loged in");

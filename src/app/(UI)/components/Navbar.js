@@ -31,10 +31,10 @@ export default function Navbar() {
             <Link href='/home'>Home</Link>
         </li>
         <li>
-            <Link href='/add-task'>Add Task</Link>
+            <Link href='/add-task'>Add Post</Link>
         </li>
         <li>
-            <Link href='/show-task'>Show task</Link>
+            <Link href='/show-task'>My Posts</Link>
         </li>
        
       </ul>

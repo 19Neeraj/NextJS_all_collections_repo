@@ -38,7 +38,7 @@ export default function AddTask() {
   return (
     <div className="flex justify-center items-center">
       <div className=" bg-blue-300 mt-10 p-10 rounded-xl w-96">
-        <h1>Add your task</h1>
+        <h1>Add your post</h1>
         <form onSubmit={handleAddtask}>
           <div>
             <label htmlFor="task-title">title</label>
