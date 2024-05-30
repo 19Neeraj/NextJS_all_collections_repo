@@ -4,14 +4,15 @@ import jwt from "jsonwebtoken";
 
 export async function POST(request) {
 
-  const { title, content, userId } = await request.json();
+  const { title, content } = await request.json();
   const authToken = request.cookies.get("authToken")?.value;
   const data = jwt.verify(authToken, process.env.JWT_KEY);
   console.log(data);
   try {
     const task = new Task({
-      title, content, userId:data._id,
+      title, content, userId:data._id, userName:data.name,
     });
+    console.log(task);
     const createdTask = await task.save();
     return NextResponse.json({createdTask , success: true ,})
   } catch (error) {

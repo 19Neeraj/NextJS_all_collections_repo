@@ -7,7 +7,7 @@ export function middleware(request) {
     // console.log("middleware excuted");
 const authToken=request.cookies.get("authToken")?.value;
 console.log(authToken);
-if(request.nextUrl.pathname=='/api/login'||request.nextUrl.pathname==="/api/users"){
+if(request.nextUrl.pathname=='/api/login'||request.nextUrl.pathname==="/api/users"||request.nextUrl.pathname==="/api/signup"){
   return
 }
 const logedinNotAccesspath = request.nextUrl.pathname === "/log_in" || request.nextUrl.pathname === "/signup";

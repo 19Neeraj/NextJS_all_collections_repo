@@ -25,11 +25,14 @@ export default function Home() {
   useEffect(()=>{
       posthendle();
   },[])
+
+  console.log(post);
   return (
     <div className="mt-24 flex gap-5 flex-wrap">
       {post.map((posts)=>(
     <div key={posts._id} >
-        <AllpostHome title={posts.title} content={posts.content} date={posts.addedDate} userid={posts.userId}></AllpostHome>
+        <AllpostHome title={posts.title} content={posts.content} date={posts.addedDate} userid={posts.userId} username={posts.userName}></AllpostHome>
+        {/* <AllpostHome data={posts}></AllpostHome> */}
         
         </div>
       ))}

@@ -18,6 +18,10 @@ const TaskSchema = new  mongoose.Schema({
         type:mongoose.ObjectId,
         require:true
     },
+    userName:{
+        type:String,
+        require:true
+    }
 
 
 });

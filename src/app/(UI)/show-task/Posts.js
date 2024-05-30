@@ -9,7 +9,7 @@ export default function Posts(props) {
   const { title, content, date } = props;
   return (
     <div className="bg-blue-200 rounded-md mt-4 p-5 flex gap-5 w-[400px] px-5">
-      <div className="flex items-center flex-col">
+      <div className="flex items-center flex-col w-32">
         <p className="text-5xl">
           <FaUserAlt />
         </p>
