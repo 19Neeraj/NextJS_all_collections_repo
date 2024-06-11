@@ -4,8 +4,10 @@ import UserContext from "@/context/userContext";
 import Link from "next/link";
 import React, { useContext } from "react";
 import { toast } from "react-toastify";
-
+import { useRouter } from 'next/navigation';
 export default function Navbar() {
+  const router = useRouter();
+
   const loginuser =useContext(UserContext);
   console.log(loginuser.user);
 
@@ -14,6 +16,9 @@ export default function Navbar() {
       const logedres= await userlogedout();
       console.log(logedres);
       loginuser.setUser(undefined);
+      await router.push('/add-task'); 
+      window.location.reload();
+      
     } catch (error) {
       console.log(error);
       toast.error("Log out error");

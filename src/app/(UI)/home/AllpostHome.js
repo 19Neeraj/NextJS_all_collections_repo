@@ -14,23 +14,23 @@ const [userinfo,setUserinfo]=useState();
 //   const { name, about, email } = context.user;
   const { title, content, date ,userid,username} = props;
 // console.log(userid);
-  async function getallposthendle (userid) {
-    try {
-      const singleuser = await getsingleuser(userid);
-      console.log(singleuser);
-      setUserinfo(singleuser);
-    } catch (error) {
-      console.log(error);
-      toast.error('failed to load post');
-    }
+//   async function getallposthendle (userid) {
+//     try {
+//       const singleuser = await getsingleuser(userid);
+//       console.log(singleuser);
+//       setUserinfo(singleuser);
+//     } catch (error) {
+//       console.log(error);
+//       toast.error('failed to load post');
+//     }
 
-  }
- useEffect(()=>{
-    if(userid){
-        getallposthendle(userid);
-    }
+//   }
+//  useEffect(()=>{
+//     if(userid){
+//         getallposthendle(userid);
+//     }
     
-  },[userid])
+//   },[userid])
 //   console.log(userinfo[0].email);
 //   const {name,about}=userinfo;
   // console.log(username);

@@ -3,8 +3,12 @@ import React, { useState } from "react";
 import { addTask } from "../../services/taskService";
 import { Result } from "postcss";
 import { toast } from "react-toastify";
+import { useRouter } from 'next/navigation';
+
 
 export default function AddTask() {
+  const router = useRouter();
+
   const [task, SetTask] = useState({
     title: "",
     content: "",
@@ -28,6 +32,7 @@ export default function AddTask() {
           content: "",
           userId: "",
         });
+        router.push('/add-task');
       } else {
         toast.error("failed to create the post");
       }

@@ -12,3 +12,7 @@ export async function allPosts(){
    const result  = await httpAxios.get(`/api/tasks`).then((response)=>response.data);
    return result;
 }
+export async function deletePosts(postid){
+   const result  = await httpAxios.delete(`/api/tasks/${postid}`).then((response)=>response.data);
+   return result;
+}
