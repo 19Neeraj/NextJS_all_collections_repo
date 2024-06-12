@@ -33,11 +33,9 @@ export async function POST(request) {
         messaage: "success",
         status: 200,
         success:true,
-       
-
       });
       console.log(response);
-    response.cookies.set("authToken",token,{expiresIn:"1d",httpOnly:true,});
+    response.cookies.set("authToken",token,{expiresIn:"1d",httpOnly:false,});
     
     return response;
 

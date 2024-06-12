@@ -60,7 +60,9 @@ export default function AddTask() {
                   title: e.target.value,
                 })
               }
-            ></input>
+            >
+              
+            </input>
           </div>
           <div>
             <label htmlFor="task_content">content</label>

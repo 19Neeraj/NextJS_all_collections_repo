@@ -4,12 +4,9 @@ import { NextResponse } from "next/server";
 // get single task
 export async function GET(request, { params }) {
     const { taskId } = params;
-
     try {
-
         const gttask = await Task.findById(taskId);
         return NextResponse.json(gttask);
-
     } catch (error) {
         console.log(error);
         return NextResponse.json({
