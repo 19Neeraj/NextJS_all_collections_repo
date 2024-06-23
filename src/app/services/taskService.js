@@ -16,3 +16,7 @@ export async function deletePosts(postid){
    const result  = await httpAxios.delete(`/api/tasks/${postid}`).then((response)=>response.data);
    return result;
 }
+export async function UpdatePosts(_id,post){
+   const result  = await httpAxios.put(`/api/tasks/${_id}`,post).then((response)=>response.data);
+   return result;
+}

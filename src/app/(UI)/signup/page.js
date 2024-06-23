@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/navigation';
 import { signup } from "@/app/services/userService";
+import Link from "next/link";
 
 export default function SignupPage() {
     const router = useRouter();
@@ -45,13 +46,13 @@ export default function SignupPage() {
   };
   return (
     <div className="flex justify-center items-center">
-      <div className=" bg-blue-300 mt-10 p-10 rounded-xl w-96">
+      <div className=" mt-10 p-10 w-96 rounded-2xl shadow-inner shadow-textGreen">
         <h1 className=" font-bold text-white py-3">Sign up</h1>
         <form onSubmit={handleAdduser} className="flex flex-col gap-3">
           <div>
             <label htmlFor="name">Full Name</label>
             <input
-              className=" w-full rounded-lg"
+              className=" w-full py-1 rounded-lg text-black"
               placeholder="Enter your Name"
               id="name"
               name="name"
@@ -69,7 +70,7 @@ export default function SignupPage() {
             <label htmlFor="email">Email ID</label>
             <input
             type="Email"
-              className=" w-full rounded-lg"
+              className=" w-full py-1 rounded-lg text-black"
               placeholder="Enter your Email here"
               id="email"
               name="user_title"
@@ -88,7 +89,7 @@ export default function SignupPage() {
             <label htmlFor="user-title">password</label>
             <input
             type="password"
-              className=" w-full rounded-lg"
+              className=" w-full py-1 rounded-lg text-black"
               placeholder="Enter your Password"
               id="password"
               name="user_title"
@@ -105,7 +106,7 @@ export default function SignupPage() {
           <div>
             <label htmlFor="about">About</label>
             <textarea
-              className=" w-full rounded-lg"
+              className=" w-full rounded-lg text-black"
               placeholder="About yourself"
               id="about"
               rows={3}
@@ -123,7 +124,7 @@ export default function SignupPage() {
           
 
           <div className="flex gap-3">
-            <button className="bg-blue-500 px-5 rounded-xl hover:bg-blue-400">
+            <button className="px-4 py-2 w-24 rounded-md text-textGreen text-[13px] border border-textGreen  hover:bg-hoverColor duration-300">
               Register
             </button>
             <button
@@ -132,11 +133,13 @@ export default function SignupPage() {
             email:"",
             password:"",
             about:""})}
-              className="bg-red-600 px-4 py-1 rounded-xl hover:bg-red-400"
+              className="px-4 py-2 w-24 rounded-md text-textGreen text-[13px] border border-red-400  hover:bg-hoverColor "
             >
               clear
             </button>
           </div>
+          <span>if you are already Registered <Link href='/log_in' className=" text-textGreen"> Log-in</Link></span>
+
         </form>
         {/* {JSON.stringify(user)} */}
       </div>

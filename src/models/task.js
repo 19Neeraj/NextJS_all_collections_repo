@@ -21,8 +21,11 @@ const TaskSchema = new  mongoose.Schema({
     userName:{
         type:String,
         require:true
+    },
+    posturl:{
+        type:String,
+        require:true
     }
-
 
 });
 

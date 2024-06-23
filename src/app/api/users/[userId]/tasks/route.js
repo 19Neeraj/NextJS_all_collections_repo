@@ -7,7 +7,7 @@ export async function GET(request,{params}){
         const tasks = await Task.find({
             userId: userId,
         });
-        return NextResponse.json(tasks);
+        return NextResponse.json(tasks.reverse());
 
     } catch (error) {
         console.log(error);

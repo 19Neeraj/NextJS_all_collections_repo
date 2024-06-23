@@ -14,7 +14,7 @@ useEffect (()=>{
         setUser({...logeduser});
     } catch (error) {
         console.log(error);
-        toast.error("failed to fatch the user");
+        // toast.error("failed to fatch the user");
     }
 }
 fetchData();

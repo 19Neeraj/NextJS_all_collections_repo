@@ -16,7 +16,7 @@ export default function Home() {
       setPost(posts);
     } catch (error) {
       console.log(error);
-      toast.error('failed to load post');
+      // toast.error('failed to load post');
     }
 
   }
@@ -28,12 +28,11 @@ export default function Home() {
 
   console.log(post);
   return (
-    <div className="mt-24 flex gap-5 flex-wrap">
+    <div className="mt-12 flex gap-5 md:flex-wrap mx-8 md:mx-5 items-center overflow-x-scroll pb-5">
       {post.map((posts)=>(
     <div key={posts._id} >
-        <AllpostHome title={posts.title} content={posts.content} date={posts.addedDate} userid={posts.userId} username={posts.userName}></AllpostHome>
+        <AllpostHome posturl={posts.posturl} title={posts.title} content={posts.content} date={posts.addedDate} userid={posts.userId} username={posts.userName}></AllpostHome>
         {/* <AllpostHome data={posts}></AllpostHome> */}
-        
         </div>
       ))}
     </div>

@@ -7,7 +7,7 @@ export function middleware(request) {
     // console.log("middleware excuted");
 const authToken=request.cookies.get("authToken")?.value;
 console.log(authToken);
-if(request.nextUrl.pathname=='/api/login'||request.nextUrl.pathname==="/api/users"||request.nextUrl.pathname==="/api/signup"){
+if(request.nextUrl.pathname=='/api/login'||request.nextUrl.pathname==="/api/users"||request.nextUrl.pathname==="/api/signup"||request.nextUrl.pathname==="/api/tasks"){
   return
 }
 const logedinNotAccesspath = request.nextUrl.pathname === "/log_in" || request.nextUrl.pathname === "/signup";
@@ -40,7 +40,8 @@ export const config = {
   matcher: [
 '/api/:path*', 
 '/add-task',
-'/log_in',
 '/signup',
+'/show-task',
+'/log_in',
 ],
 }

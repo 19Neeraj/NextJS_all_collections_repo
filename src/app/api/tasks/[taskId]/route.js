@@ -18,15 +18,16 @@ export async function GET(request, { params }) {
 // update the task
 export async function PUT(request,{params}){
     const {taskId}=params;
-     const{title,content}=await request.json();
+     const{title,content,posturl}=await request.json();
      try {
         const UpdateTask= await Task.findById(taskId);
         UpdateTask.title=title;
         UpdateTask.content=content;
+        UpdateTask.posturl=posturl;
 
         const res = await UpdateTask.save();
 
-        return NextResponse.json(res,{state:201});
+        return NextResponse.json({res,success:true});
 
      } catch (error) {
         console.log(error);
